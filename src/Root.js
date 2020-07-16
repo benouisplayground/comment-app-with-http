@@ -13,10 +13,13 @@ import reducers from 'reducers';
 // to fix the test file. we have to export
 // and root function that wrap a test component with a Provider tag
 
-export default (props) => {
+// to fix CommentList test file we will have to
+// destrucuering the props
+
+export default ({ children , initialState = {} }) => {
   return (
-    <Provider store={createStore(reducers, {})}>
-      {props.children}  {/* this is equal to <App />  */}
+    <Provider store={createStore(reducers, initialState)}>
+      {children}  {/* this is equal to <App />  */}
     </Provider>
   )
 }
